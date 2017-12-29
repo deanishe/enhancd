@@ -41,6 +41,18 @@ __enhancd::filter::reverse()
         2>/dev/null
 }
 
+__enhancd::filter::trim()
+{
+    if [[ $ENHANCD_HISTORY_SIZE -gt 0 ]]; then
+        local n=$(( $ENHANCD_HISTORY_SIZE / 2 ))
+        local s="$( cat <&0 )"
+        echo $s | head -n $n
+        echo $s | tail -n $n
+    else
+        cat <&0
+    fi
+}
+
 __enhancd::filter::fuzzy()
 {
     if [[ -z $1 ]]; then

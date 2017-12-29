@@ -30,7 +30,7 @@ __enhancd::history::update()
     {
         __enhancd::path::step_by_step | __enhancd::filter::reverse
         __enhancd::path::scan_cwd
-        __enhancd::history::origin --home
+        __enhancd::history::origin --home | __enhancd::filter::trim
     } \
         | __enhancd::filter::reverse \
         | __enhancd::filter::unique \
